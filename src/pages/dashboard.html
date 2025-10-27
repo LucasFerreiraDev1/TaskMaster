@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <title>TaskMaster — Gerenciador de Tarefas</title>
+</head>
+<body>
+    <div class="app">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="logo">TM</div>
+                <div>
+                    <h1>TaskMaster</h1>
+                    <div style="font-size: 12px; color: var(--text-light);">Gerenciador profissional</div>
+                </div>
+            </div>
+
+            <nav class="nav">
+                <a href="#" class="active">📋 Dashboard</a>
+                <a href="#">⚡ Prioridades</a>
+                <a href="#">🗂️ Projetos</a>
+                <a href="#">📊 Relatórios</a>
+                <a href="#">⚙️ Configurações</a>
+            </nav>
+        </aside>
+
+        <main class="main">
+            <div class="topbar">
+                <div class="search"">
+                    🔎
+                    <input type="text" placeholder="Pesquisar tarefas, projetos ou colaboradores" />
+                </div>
+
+                <div class="filters">
+                    <button type="button" class="btn">Filtrar</button>
+                    <button type="button" class="btn">Ordenar</button>
+                    <button type="button" class="btn primary">+ Nova tarefa</button>
+                </div>
+            </div>
+
+            <section class="board"></section>
+        </main>
+    </div>
+</body>
+</html>

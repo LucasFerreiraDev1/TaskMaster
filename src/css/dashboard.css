@@ -1,0 +1,153 @@
+:root {
+    --bg: #0f1720;
+    --panel: #0b1220;
+    --text-main: #e6eef8;
+    --text-light: #9aa4b2;
+    --text-btn: #041020;
+    --text-logo: #051019;
+    --accent: #56b6ff;
+    --accent-2: #6be3a6;
+    --glass: rgba(255, 255, 255, 0.03);
+    --radius: 12px;
+    --card-radius: 14px;
+    --shadow: 0 6px 20px rgba(2, 6, 23, 0.6);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    background: linear-gradient(180deg, var(--bg), #07101a);
+    color: var(--text-main);
+}
+
+.app {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 24px;
+    height: 100vh;
+    padding: 28px;
+    align-items: flex-start;
+}
+
+.sidebar {
+    background: linear-gradient(180deg, var(--panel), rgb(10, 18, 28, 0.7));
+    padding: 20px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    min-height: 0;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: var(--text-logo);
+}
+
+.brand h1 {
+    font-size: 16px;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 6px;
+}
+
+.nav a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.nav a.active {
+    background: var(--glass);
+    color: var(--accent);
+    box-shadow: inset 0 0 0 1px rgba(86, 182, 255, 0.06);
+}
+
+.main {
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.search {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background-color: var(--panel);
+    padding: 10px;
+    border-radius: 12px;
+    gap: 10px;
+    box-shadow: 0 4px 14px rgba(2,6,23,0.5);
+}
+
+.search input {
+    flex: 1;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: inherit;
+    font-size: 14px;
+}
+
+.filters {
+    display: flex;
+    gap: 8px;
+}
+
+.btn {
+    padding: 10px 14px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    cursor: pointer;
+    color: var(--text-main);
+    transition: all .2s ease;
+}
+
+.btn:hover{
+    transform: translateY(-2px);
+}
+
+.btn.primary {
+    background: linear-gradient(90deg, var(--accent), #2aa6ff);
+    color: var(--text-btn);
+    border: none;
+}

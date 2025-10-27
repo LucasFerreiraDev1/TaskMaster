@@ -51,7 +51,7 @@
                 </div>
             </div>
 
-            
+            <section class="board" aria-label="Quadro de tarefas" id="board"></section>
         </main>
     </div>
 
@@ -94,13 +94,19 @@
             });
         });
 
-        function testeAjax(url) {
-            let ajax = new XMLHttpRequest();
+        async function testeAjax(url) {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error('Falha na requisição');
+                }
+                const data = await response.text();
+                document.getElementById('board').innerHTML = data;
+                console.log('Requisição bem-sucedida!');
 
-            ajax.open('GET', url);
-            ajax.send();
-
-            console.log(ajax);
+            } catch (error) {
+                console.error('Falha na requisição:', error);
+            }
 
         }
     </script>

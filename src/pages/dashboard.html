@@ -21,7 +21,7 @@
             </div>
 
             <nav class="nav">
-                <a href="#" class="active">📋 Dashboard</a>
+                <a href="#" class="active" onclick="testeAjax('teste.html')">📋 Dashboard</a>
                 <a href="#">🕒 Pendentes</a>
                 <a href="#">⏳ Em Progresso</a>
                 <a href="#">✅ Concluído</a>
@@ -51,79 +51,7 @@
                 </div>
             </div>
 
-            <section class="board" aria-label="Quadro de tarefas">
-                <!-- Primeira Coluna -->
-                <div class="column">
-                    <div class="col-header">
-                        <strong>🕒 Pendentes</strong>
-                        <span class="text-light">5</span>
-                    </div>
-
-                    <article class="task">
-                        <div class="title">Redigir roteiro do vídeo institucional</div>
-
-                        <div class="meta">
-                            <div class="text-light">Responsável: Lucas</div>
-                            <div class="text-light">Prazo: 26/10/2025</div>
-                        </div>
-
-                        <div class="labels">
-                            <!-- Nome do projeto-->
-                            <span class="label">Roteiro</span>
-                            <!-- Prioridade -->
-                            <span class="label">Médio</span>
-                        </div>
-                    </article>
-                </div>
-
-                <!-- Segunda Coluna -->
-                <div class="column">
-                    <div class="col-header">
-                        <strong>⏳ Em Progresso</strong>
-                        <span class="text-light">3</span>
-                    </div>
-
-                    <article class="task">
-                        <div class="title">Integrar API de pagamentos</div>
-
-                        <div class="meta">
-                            <div class="text-light">Responsável: Joca</div>
-                            <div class="text-light">Prazo: 26/10/2025</div>
-                        </div>
-
-                        <div class="labels">
-                            <!-- Nome do projeto-->
-                            <span class="label">Backend</span>
-                            <!-- Prioridade -->
-                            <span class="label">Alto</span>
-                        </div>
-                    </article>
-                </div>
-
-                <!-- Terceira Coluna -->
-                <div class="column">
-                    <div class="col-header">
-                        <strong>✅ Concluído</strong>
-                        <span class="text-light">8</span>
-                    </div>
-
-                    <article class="task">
-                        <div class="title">Deploy versão 1.3</div>
-
-                        <div class="meta">
-                            <div class="text-light">Responsável: Time Dev</div>
-                            <div class="text-light">Prazo: 26/10/2025</div>
-                        </div>
-
-                        <div class="labels">
-                            <!-- Nome do projeto-->
-                            <span class="label">Roteiro</span>
-                            <!-- Prioridade -->
-                            <span class="label">Baixo</span>
-                        </div>
-                    </article>
-                </div>
-            </section>
+            
         </main>
     </div>
 
@@ -165,6 +93,16 @@
                 }
             });
         });
+
+        function testeAjax(url) {
+            let ajax = new XMLHttpRequest();
+
+            ajax.open('GET', url);
+            ajax.send();
+
+            console.log(ajax);
+
+        }
     </script>
 </body>
 </html>

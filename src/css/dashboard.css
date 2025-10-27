@@ -9,7 +9,6 @@
     --accent-2: #6be3a6;
     --glass: rgba(255, 255, 255, 0.03);
     --radius: 12px;
-    --card-radius: 14px;
     --shadow: 0 6px 20px rgba(2, 6, 23, 0.6);
 }
 
@@ -151,3 +150,100 @@ html, body {
     color: var(--text-btn);
     border: none;
 }
+
+.board {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 8px;
+} 
+
+.column {
+    min-width: 320px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+    padding: 14px;
+    border-radius: var(--radius);
+    max-height: calc(100vh - 180px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.column::-webkit-scrollbar {
+    width: 8px;
+}
+
+.column::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 10px;
+}
+
+.column::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--accent), #2aa6ff);
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+.column::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #2aa6ff, var(--accent-2));
+}
+
+/* Firefox scrollbar styling */
+.column {
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) rgba(255, 255, 255, 0.02);
+}
+
+.col-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.task {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.005));
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 6px 18px rgba(3, 9, 18, 0.45);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.task .title {
+    font-weight: 600;
+}
+
+.task .meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-light);
+    font-size: 13px;
+}
+
+.labels {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.label {
+    padding: 6px 8px;
+    border-radius: 20px;
+    font-size: 12px;
+    background-color: rgba(255, 255, 255, 0.03);
+    color: var(--text-light);
+}
+
+@media (max-width:1100px) {
+    .app {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr
+    }
+
+}
+
+.text-light {
+    color: var(--text-light);
+}
+

@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../css/dashboard.css">
     <title>TaskMaster — Gerenciador de Tarefas</title>
 </head>
+
 <body>
     <div class="app">
         <!-- SIDEBAR -->
@@ -21,7 +22,7 @@
             </div>
 
             <nav class="nav">
-                <a href="#" class="active" onclick="testeAjax('teste.html')">📋 Dashboard</a>
+                <a href="#" class="active">📋 Dashboard</a>
                 <a href="#">🕒 Pendentes</a>
                 <a href="#">⏳ Em Progresso</a>
                 <a href="#">✅ Concluído</a>
@@ -34,25 +35,97 @@
                 <button class="mobile-toggle sidebar-toggle" aria-label="Toggle sidebar">
                     <i class="fas fa-bars"></i>
                 </button>
-                
+
                 <div class="search"">
                     🔎
-                    <input type="text" placeholder="Pesquisar tarefas, projetos ou colaboradores" />
-                </div>
-
-                <button class="mobile-toggle filters-toggle" aria-label="Toggle filters">
-                    <i class="fas fa-filter"></i>
-                </button>
-
-                <div class="filters">
-                    <button type="button" class="btn">Filtrar</button>
-                    <button type="button" class="btn">Ordenar</button>
-                    <button type="button" class="btn primary">+ Nova tarefa</button>
-                </div>
+                    <input type=" text" placeholder="Pesquisar tarefas, projetos ou colaboradores" />
             </div>
 
-            <section class="board" aria-label="Quadro de tarefas" id="board"></section>
-        </main>
+            <button class="mobile-toggle filters-toggle" aria-label="Toggle filters">
+                <i class="fas fa-filter"></i>
+            </button>
+
+            <div class="filters">
+                <button type="button" class="btn">Filtrar</button>
+                <button type="button" class="btn">Ordenar</button>
+                <button type="button" class="btn primary">+ Nova tarefa</button>
+            </div>
+    </div>
+
+    <section class="board" aria-label="Quadro de tarefas" id="board">
+        <!-- Primeira Coluna -->
+        <div class="column">
+            <div class="col-header">
+                <strong>🕒 Pendentes</strong>
+                <span class="text-light">5</span>
+            </div>
+
+            <article class="task">
+                <div class="title">Redigir roteiro do vídeo institucional</div>
+
+                <div class="meta">
+                    <div class="text-light">Responsável: Lucas</div>
+                    <div class="text-light">Prazo: 26/10/2025</div>
+                </div>
+
+                <div class="labels">
+                    <!-- Nome do projeto-->
+                    <span class="label">Roteiro</span>
+                    <!-- Prioridade -->
+                    <span class="label">Médio</span>
+                </div>
+            </article>
+        </div>
+
+        <!-- Segunda Coluna -->
+        <div class="column">
+            <div class="col-header">
+                <strong>⏳ Em Progresso</strong>
+                <span class="text-light">3</span>
+            </div>
+
+            <article class="task">
+                <div class="title">Integrar API de pagamentos</div>
+
+                <div class="meta">
+                    <div class="text-light">Responsável: Joca</div>
+                    <div class="text-light">Prazo: 26/10/2025</div>
+                </div>
+
+                <div class="labels">
+                    <!-- Nome do projeto-->
+                    <span class="label">Backend</span>
+                    <!-- Prioridade -->
+                    <span class="label">Alto</span>
+                </div>
+            </article>
+        </div>
+
+        <!-- Terceira Coluna -->
+        <div class="column">
+            <div class="col-header">
+                <strong>✅ Concluído</strong>
+                <span class="text-light">8</span>
+            </div>
+
+            <article class="task">
+                <div class="title">Deploy versão 1.3</div>
+
+                <div class="meta">
+                    <div class="text-light">Responsável: Time Dev</div>
+                    <div class="text-light">Prazo: 26/10/2025</div>
+                </div>
+
+                <div class="labels">
+                    <!-- Nome do projeto-->
+                    <span class="label">Roteiro</span>
+                    <!-- Prioridade -->
+                    <span class="label">Baixo</span>
+                </div>
+            </article>
+        </div>
+    </section>
+    </main>
     </div>
 
     <!-- Overlay para menu mobile -->
@@ -66,18 +139,18 @@
         const filtersToggle = document.querySelector('.filters-toggle');
         const filters = document.querySelector('.filters');
 
-        sidebarToggle?.addEventListener('click', function() {
+        sidebarToggle?.addEventListener('click', function () {
             sidebar.classList.toggle('show');
             overlay.classList.toggle('show');
         });
 
-        filtersToggle?.addEventListener('click', function() {
+        filtersToggle?.addEventListener('click', function () {
             filters.classList.toggle('show');
             overlay.classList.toggle('show');
         });
 
         // Close menus when clicking overlay
-        overlay?.addEventListener('click', function() {
+        overlay?.addEventListener('click', function () {
             sidebar.classList.remove('show');
             filters.classList.remove('show');
             overlay.classList.remove('show');
@@ -86,7 +159,7 @@
         // Close menu when clicking a nav link (mobile only)
         const navLinks = document.querySelectorAll('.nav a');
         navLinks.forEach(link => {
-            link.addEventListener('click', function() {
+            link.addEventListener('click', function () {
                 if (window.innerWidth <= 767) {
                     sidebar.classList.remove('show');
                     overlay.classList.remove('show');
@@ -94,21 +167,21 @@
             });
         });
 
-        async function testeAjax(url) {
-            try {
-                const response = await fetch(url);
-                if (!response.ok) {
-                    throw new Error('Falha na requisição');
-                }
-                const data = await response.text();
-                document.getElementById('board').innerHTML = data;
-                console.log('Requisição bem-sucedida!');
+        // async function testeAjax(url) {
+        //     try {
+        //         const response = await fetch(url);
+        //         if (!response.ok) {
+        //             throw new Error('Falha na requisição');
+        //         }
+        //         const data = await response.text();
+        //         document.getElementById('board').innerHTML = data;
+        //         console.log('Requisição bem-sucedida!');
 
-            } catch (error) {
-                console.error('Falha na requisição:', error);
-            }
-
-        }
+        //     } catch (error) {
+        //         console.error('Falha na requisição:', error);
+        //     }
+        // }
     </script>
 </body>
+
 </html>

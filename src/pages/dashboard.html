@@ -31,10 +31,18 @@
 
         <main class="main">
             <div class="topbar">
+                <button class="mobile-toggle sidebar-toggle" aria-label="Toggle sidebar">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
                 <div class="search"">
                     🔎
                     <input type="text" placeholder="Pesquisar tarefas, projetos ou colaboradores" />
                 </div>
+
+                <button class="mobile-toggle filters-toggle" aria-label="Toggle filters">
+                    <i class="fas fa-filter"></i>
+                </button>
 
                 <div class="filters">
                     <button type="button" class="btn">Filtrar</button>
@@ -118,5 +126,45 @@
             </section>
         </main>
     </div>
+
+    <!-- Overlay para menu mobile -->
+    <div class="overlay" id="overlay"></div>
+
+    <script>
+        // Toggle Sidebar
+        const sidebarToggle = document.querySelector('.sidebar-toggle');
+        const sidebar = document.querySelector('.sidebar');
+        const overlay = document.getElementById('overlay');
+        const filtersToggle = document.querySelector('.filters-toggle');
+        const filters = document.querySelector('.filters');
+
+        sidebarToggle?.addEventListener('click', function() {
+            sidebar.classList.toggle('show');
+            overlay.classList.toggle('show');
+        });
+
+        filtersToggle?.addEventListener('click', function() {
+            filters.classList.toggle('show');
+            overlay.classList.toggle('show');
+        });
+
+        // Close menus when clicking overlay
+        overlay?.addEventListener('click', function() {
+            sidebar.classList.remove('show');
+            filters.classList.remove('show');
+            overlay.classList.remove('show');
+        });
+
+        // Close menu when clicking a nav link (mobile only)
+        const navLinks = document.querySelectorAll('.nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 767) {
+                    sidebar.classList.remove('show');
+                    overlay.classList.remove('show');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

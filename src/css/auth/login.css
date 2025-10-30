@@ -1,24 +1,6 @@
-:root {
-    --bg: #0f1720;
-    --container: #0b1220;
-    --text-main: #e6eef8;
-    --text-light: #9aa4b2;
-    --text-btn: #041020;
-    --accent: #56b6ff;
-    --accent-2: #6be3a6;
-    --radius: 12px;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-}
+@import url('../base.css');
 
 body {
-    background: linear-gradient(180deg, var(--bg), #07101a);
-    color: var(--text-main);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -27,7 +9,7 @@ body {
 }
 
 .login-container {
-    background-color: var(--container);
+    background-color: var(--panel);
     border-radius: var(--radius);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
     padding: 20px 40px;

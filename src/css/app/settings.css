@@ -383,30 +383,23 @@ html, body {
 .main::-webkit-scrollbar-track {
     background: rgba(255, 255, 255, 0.02);
     border-radius: 10px;
-    margin: 4px 0;
 }
 
 .main::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, var(--accent), #2aa6ff);
+    background: rgba(86, 182, 255, 0.2);
     border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 2px 8px rgba(86, 182, 255, 0.3);
+    transition: background 0.3s ease;
 }
 
 .main::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #2aa6ff, var(--accent));
-    box-shadow: 0 4px 12px rgba(86, 182, 255, 0.5);
-    transform: scale(1.1);
+    background-color: rgba(86, 182, 255, 0.4);
 }
 
-.main::-webkit-scrollbar-thumb:active {
-    background: linear-gradient(180deg, #1a8ce6, #4da6ff);
-}
 
 /* Para Firefox */
 .main {
     scrollbar-width: thin;
-    scrollbar-color: var(--accent) rgba(255, 255, 255, 0.02);
+    scrollbar-color: rgba(86, 182, 255, 0.2) rgba(255, 255, 255, 0.02);
 }
 
 /* Efeito de fade no final do scroll */

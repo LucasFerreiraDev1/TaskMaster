@@ -31,8 +31,6 @@ export function modalNotify(textHeader, textBody, typeStyle) {
         }, 500);
     }, 3000);
 
-
-
     switch (typeStyle) {
         case 'success':
             modal.classList.add('success');
@@ -48,4 +46,15 @@ export function modalNotify(textHeader, textBody, typeStyle) {
             break;
     }
     
+}
+
+export function loading(srcLoading, textLoading) {
+    let loading = document.createElement('div');
+    loading.classList.add('loading');
+    loading.innerHTML = `
+        <img src="${srcLoading}" alt="Carregando...">
+        <p>${textLoading}</p>
+    `;
+
+    document.body.appendChild(loading);
 }

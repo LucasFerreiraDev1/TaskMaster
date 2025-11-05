@@ -24,7 +24,7 @@ document.querySelector('#btnRegister').addEventListener('click', (event) => {
         }
     }
 
-    if(!validateEmail(fieldEmail.value)) {
+    if(!validateEmail(fieldEmail.value.toLowerCase())) {
         modalNotify('Algo deu errado!', 'E-mail inválido', 'error');
         fieldEmail.style.borderColor = 'red';
         return;
@@ -37,9 +37,14 @@ document.querySelector('#btnRegister').addEventListener('click', (event) => {
         return;
     }
     
-    let user = new Users(fieldName.value, fieldEmail.value, fieldPassword.value);
-    user.createUser();
+    let user = new Users(
+        fieldName.value,
+        fieldEmail.value.toLowerCase(),
+        fieldPassword.value
+    );
+    user.registerUser();
 
+    clearFields();
 });
 
 function validateEmail(email) {
@@ -47,5 +52,9 @@ function validateEmail(email) {
     return emailRegex.test(email);
 }
 
-
-
+function clearFields() {
+    document.querySelector("#name").value = '';
+    document.querySelector("#email").value = '';
+    document.querySelector("#password").value = '';
+    document.querySelector("#confirmPassword").value = '';
+}

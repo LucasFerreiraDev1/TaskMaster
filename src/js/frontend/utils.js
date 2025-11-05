@@ -58,3 +58,9 @@ export function loading(srcLoading, textLoading) {
 
     document.body.appendChild(loading);
 }
+
+
+export function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}

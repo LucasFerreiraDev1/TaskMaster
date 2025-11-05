@@ -1,5 +1,5 @@
-import { Users } from "../DB/Users.js";
-import { modalNotify } from "../../frontend/utils.js";
+import { Register } from "../models/models.js";
+import { modalNotify, validateEmail } from "../../frontend/utils.js";
 
 document.querySelector('#btnRegister').addEventListener('click', (event) => {
     event.preventDefault();
@@ -37,24 +37,11 @@ document.querySelector('#btnRegister').addEventListener('click', (event) => {
         return;
     }
     
-    let user = new Users(
+    let newUser = new Register(
         fieldName.value,
         fieldEmail.value.toLowerCase(),
         fieldPassword.value
     );
-    user.registerUser();
+    newUser.register();
 
-    clearFields();
 });
-
-function validateEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
-
-function clearFields() {
-    document.querySelector("#name").value = '';
-    document.querySelector("#email").value = '';
-    document.querySelector("#password").value = '';
-    document.querySelector("#confirmPassword").value = '';
-}

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../../css/auth/register.css">
     <title>TaskMaster — Cadastro</title>
 </head>
@@ -31,17 +32,16 @@
             </div>
 
             <div>
-                <label for="confirm">Confirmar senha</label>
-                <input id="confirm" type="password" placeholder="Confirme a senha" required>
+                <label for="confirmPassword">Confirmar senha</label>
+                <input id="confirmPassword" type="password" placeholder="Confirme a senha" required>
             </div>
 
             <p class="terms">
                 Ao se cadastrar, você concorda com nossos
-                <a href="#">Termos de uso</a> e <a href="#">Política de
-                    privacidade</a>.
+                <a href="#">Termos de uso</a> e <a href="#">Política de privacidade</a>.
             </p>
 
-            <button class="btn primary" type="submit">Cadastrar</button>
+            <button class="btn primary" type="submit" id="btnRegister">Cadastrar</button>
 
         </form>
 
@@ -50,6 +50,8 @@
         </div>
 
     </div>
+
+    <script src="../../js/backend/auth/register.js" type="module" defer="defer"></script>
 </body>
 
 </html>

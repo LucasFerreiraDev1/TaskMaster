@@ -48,3 +48,40 @@ body {
 }
 
 
+.modal {
+    border-radius: 5px;
+    padding: 10px;
+    position: fixed;
+    bottom: 5%;
+    right: -30%;
+    z-index: 1;
+    min-width: 300px;
+    opacity: 0;
+    transition: all .6s ease-in-out;
+}
+.modal-header {
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255, 0.9);
+    font-weight: 600;
+    font-size: 20px;
+}
+.modal-body {
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+.modal.error {
+    background: #BF3030;
+}
+.modal.error .modal-body {
+    background: #8C1F1F;
+}
+
+.modal.success {
+    background: #43A88C;
+}
+.modal.success .modal-body {
+    background: #2F7561;
+}

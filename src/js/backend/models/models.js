@@ -1,8 +1,7 @@
 import { BancoLocalStorage } from "./BancoLocalStorage.js"
 import { modalNotify, loading } from "../../frontend/utils.js";
 
-let users = new BancoLocalStorage('Users');
-let allUsers = users.getLocalStorage();
+
 
 export class Login {
 
@@ -49,7 +48,10 @@ export class Register {
     }
 
     register() {
-        
+
+        let users = new BancoLocalStorage('Users');
+        let allUsers = users.getLocalStorage();
+    
         const newUser = {
             name: this.name,
             email: this.email,
@@ -69,3 +71,64 @@ export class Register {
         setTimeout(() => { location.href = './login.html' }, 2500);
     }   
 }
+export class Task {
+    constructor(
+        nameTask,
+        responsible,
+        nameProject, 
+        description,
+        date,
+        priority,
+        status,
+        createDate
+    ) {
+        this.nameTask = nameTask,
+        this.responsible = responsible,
+        this.nameProject = nameProject,
+        this.description = description,
+        this.date = date, // Data de Vencimento
+        this.priority = priority,
+        this.status = status,
+        this.createDate = createDate
+    }
+
+
+    createTask() {
+        let tasks = new BancoLocalStorage('Tasks');
+        let allTasks = tasks.getLocalStorage();
+
+        const newTask = {
+            name_task: this.nameTask,
+            responsible: this.responsible,
+            name_project: this.nameProject, 
+            description: this.description,
+            date: this.date,
+            priority: this.priority,
+            status: this.status,
+            create_date: this.createDate
+        }
+
+        allTasks.push(newTask);
+        tasks.setLocalStorage(allTasks);
+    }
+}
+
+/* Criar script de destroy session e button logoff
+
+Cria class de Task
+Constructor:
+    nameTask
+    responsible
+    nameProject
+    description
+    date
+    priority
+    status
+    createDate
+
+Funções do class Task: 
+	createTask()
+	getTasks()
+	updateTask() 
+	deleteTask()
+*/

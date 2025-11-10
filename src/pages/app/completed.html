@@ -10,6 +10,16 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../../css/app/pending.css">
     <title>TaskMaster - Tarefas Concluídas</title>
+    <script type="module">
+        import { BancoLocalStorage } from '../../js/backend/models/BancoLocalStorage.js';
+        let session = new BancoLocalStorage('Session');
+        let getSession = session.getSession();
+        let validateSession = getSession.find(s => s.status === true);
+
+        if(!validateSession) {
+            location.href = '../auth/login.html';
+        }
+    </script>
 </head>
 
 <body>

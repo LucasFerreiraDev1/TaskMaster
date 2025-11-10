@@ -8,8 +8,8 @@ document.querySelector("#btnLogin").addEventListener('click', (event) => {
     let fieldPassword = document.querySelector("#password");
 
     const fields = [
-        {element: fieldEmail, label: 'E-mail'},
-        {element: fieldPassword, label: 'Senha'}
+        { element: fieldEmail, label: 'E-mail' },
+        { element: fieldPassword, label: 'Senha'}
     ];
     for(let field of fields) {
         if(field.element.value.trim() === '') {

@@ -23,9 +23,19 @@ export class Login {
             modalNotify('Algo deu errado!', 'Senha incorreta', 'error');
             return;
         } else {
+            let session = new BancoLocalStorage('Session');
+            let getSession = session.getSession();
+
+            const sessionLogin = {
+                email: this.email,
+                status: true
+            }
+
+            getSession.push(sessionLogin)
+            session.setSession(getSession);
             loading('../../assets/loading.gif','Efetuando login...');
             setTimeout(() => { location.href = '../app/pending.html' }, 2500);
-            return
+            return;
         }
     }
 }

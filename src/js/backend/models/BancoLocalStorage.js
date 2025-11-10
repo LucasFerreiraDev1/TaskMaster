@@ -8,9 +8,15 @@ export class BancoLocalStorage {
     getLocalStorage() {
         return JSON.parse(localStorage.getItem(this.key) || '[]');
     }
-
     setLocalStorage(value) {
         localStorage.setItem(this.key, JSON.stringify(value));
     }
     
+
+    getSession() {
+        return JSON.parse(localStorage.getItem(this.key) || '[]');
+    } 
+    setSession(value) {
+        localStorage.setItem(this.key, JSON.stringify(value));
+    }
 }

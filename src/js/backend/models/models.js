@@ -1,8 +1,6 @@
 import { BancoLocalStorage } from "./BancoLocalStorage.js"
 import { modalNotify, loading } from "../../frontend/utils.js";
 
-
-
 export class Login {
 
     constructor(email, password) {
@@ -11,6 +9,9 @@ export class Login {
     }
     
     login() {
+        let users = new BancoLocalStorage('Users');
+        let allUsers = users.getLocalStorage();
+
         const validateLogin = allUsers.find(user => user.email === this.email);
 
         if(!validateLogin) {
@@ -48,10 +49,9 @@ export class Register {
     }
 
     register() {
-
         let users = new BancoLocalStorage('Users');
         let allUsers = users.getLocalStorage();
-    
+
         const newUser = {
             name: this.name,
             email: this.email,
@@ -113,21 +113,9 @@ export class Task {
     }
 }
 
-/* Criar script de destroy session e button logoff
+/* 
+ => Criar script de destroy session e button logoff
 
-Cria class de Task
-Constructor:
-    nameTask
-    responsible
-    nameProject
-    description
-    date
-    priority
-    status
-    createDate
-
-Funções do class Task: 
-	createTask()
 	getTasks()
 	updateTask() 
 	deleteTask()

@@ -1,11 +1,20 @@
 
 @import url('../base.css');
 
+body {
+    overflow: hidden;
+}
 .container {
     max-width: 800px;
     margin: 0 auto;
     padding: 28px;
     min-height: 100vh;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* Para Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(86, 182, 255, 0.2) rgba(255, 255, 255, 0.02);
 }
 
 /* Header */
@@ -311,7 +320,7 @@
     }
 }
 
-/* Animações */
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -327,7 +336,7 @@
     animation: fadeInUp 0.6s ease-out;
 }
 
-/* Estados de validação */
+
 .form-input:invalid:not(:placeholder-shown) {
     border-color: var(--error);
 }
@@ -336,15 +345,35 @@
     border-color: var(--success);
 }
 
-/* Placeholder styling */
+
 .form-input::placeholder,
 .form-textarea::placeholder {
     color: var(--text-light);
     font-style: italic;
 }
 
-/* Select styling */
+
 .form-select option {
     background: var(--panel);
     color: var(--text-main);
+}
+
+.container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 10px;
+    margin: 4px 0;
+}
+
+.container::-webkit-scrollbar-thumb {
+    background-color: rgba(86, 182, 255, 0.2);
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+.container::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(86, 182, 255, 0.4);
 }

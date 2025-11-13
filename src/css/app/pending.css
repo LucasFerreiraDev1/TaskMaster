@@ -154,7 +154,7 @@
     flex-direction: column;
     gap: 16px;
     padding-bottom: 8px;
-    max-width: 1000px;
+    width: 100%;
     margin: 0 auto;
     max-height: calc(100vh - 200px);
     overflow-y: auto;
@@ -233,6 +233,7 @@
     border: 1px solid rgba(255, 255, 255, 0.05);
     transition: all 0.3s ease;
     position: relative;
+    width: 100%;
 }
 
 .task:hover {

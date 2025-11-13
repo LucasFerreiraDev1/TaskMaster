@@ -50,6 +50,7 @@ export function modalNotify(textHeader, textBody, typeStyle) {
 
 export function loading(srcLoading, textLoading) {
     let loading = document.createElement('div');
+    loading.id = 'loading';
     loading.classList.add('loading');
     loading.innerHTML = `
         <img src="${srcLoading}" alt="Carregando...">

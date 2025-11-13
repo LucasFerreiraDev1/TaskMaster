@@ -5,14 +5,16 @@ export class Login {
 
     constructor(email, password) {
         this.email = email,
-        this.password = password
+        this.password = password,
+        this.users = new BancoLocalStorage('Users'),
+        this.allUsers = this.users.getLocalStorage(),
+        this.session = new BancoLocalStorage('Session'),
+        this.getSession = this.session.getLocalStorage()
     }
     
     login() {
-        let users = new BancoLocalStorage('Users');
-        let allUsers = users.getLocalStorage();
 
-        const validateLogin = allUsers.find(user => user.email === this.email);
+        const validateLogin = this.allUsers.find(user => user.email === this.email);
 
         if(!validateLogin) {
             modalNotify('Algo deu errado!', 'Usuário não encontrado', 'error');
@@ -23,16 +25,14 @@ export class Login {
             modalNotify('Algo deu errado!', 'Senha incorreta', 'error');
             return;
         } else {
-            let session = new BancoLocalStorage('Session');
-            let getSession = session.getSession();
 
             const sessionLogin = {
                 email: this.email,
                 status: true
             }
 
-            getSession.push(sessionLogin)
-            session.setSession(getSession);
+            this.getSession.push(sessionLogin)
+            this.session.setSession(this.getSession);
             loading('../../assets/loading.gif','Efetuando login...');
             setTimeout(() => { location.href = '../app/pending.html' }, 2500);
             return;
@@ -45,12 +45,12 @@ export class Register {
     constructor(name, email, password) {
         this.name = name,
         this.email = email,
-        this.password = password
+        this.password = password,
+        this.users = new BancoLocalStorage('Users'),
+        this.allUsers = this.users.getLocalStorage()
     }
 
     register() {
-        let users = new BancoLocalStorage('Users');
-        let allUsers = users.getLocalStorage();
 
         const newUser = {
             name: this.name,
@@ -58,14 +58,14 @@ export class Register {
             password: this.password
         }
 
-        const existingEmail = allUsers.find(user => user.email === this.email);
+        const existingEmail = this.allUsers.find(user => user.email === this.email);
         if (existingEmail) {
             modalNotify('Algo deu errado!', 'E-mail já cadastrado', 'error');
             return;
         }
 
-        allUsers.push(newUser);
-        users.setLocalStorage(allUsers);
+        this.allUsers.push(newUser);
+        this.users.setLocalStorage(this.allUsers);
 
         loading('../../assets/loading.gif','Cadastrando usuário...');
         setTimeout(() => { location.href = './login.html' }, 2500);
@@ -73,14 +73,14 @@ export class Register {
 }
 export class Task {
     constructor(
-        nameTask,
-        responsible,
-        nameProject, 
-        description,
-        date,
-        priority,
-        status,
-        createDate
+        nameTask = '',
+        responsible = '',
+        nameProject = '', 
+        description = '',
+        date = '',
+        priority = '',
+        status = '',
+        createDate = ''
     ) {
         this.nameTask = nameTask,
         this.responsible = responsible,
@@ -89,16 +89,19 @@ export class Task {
         this.date = date, // Data de Vencimento
         this.priority = priority,
         this.status = status,
-        this.createDate = createDate
+        this.createDate = createDate,
+        this.tasks = new BancoLocalStorage('Tasks'),
+        this.allTasks = this.tasks.getLocalStorage(),
+        this.session = new BancoLocalStorage('Session'),
+        this.getSession = this.session.getLocalStorage()
     }
 
 
     createTask() {
-        let tasks = new BancoLocalStorage('Tasks');
-        let allTasks = tasks.getLocalStorage();
 
         const newTask = {
             name_task: this.nameTask,
+            createdBy: this.getSession[0].email,
             responsible: this.responsible,
             name_project: this.nameProject, 
             description: this.description,
@@ -108,15 +111,20 @@ export class Task {
             create_date: this.createDate
         }
 
-        allTasks.push(newTask);
-        tasks.setLocalStorage(allTasks);
+        this.allTasks.push(newTask);
+        this.tasks.setLocalStorage(this.allTasks);
+        modalNotify('Tudo certo!', 'Tarefa criada com sucesso!', 'success');
+    }
+
+    readTask() {
+        return this.allTasks;
+    }
+
+    updateTask() {
+
+    }
+
+    deleteTask() {
+
     }
 }
-
-/* 
- => Criar script de destroy session e button logoff
-
-	getTasks()
-	updateTask() 
-	deleteTask()
-*/

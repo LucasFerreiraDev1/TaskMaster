@@ -12,7 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const date = new Date()
     const createDate = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
 
-    document.querySelector('#createTask').addEventListener('click', event => {
+    // BindEvents
+    document.querySelector('#createTask').addEventListener('click', createTask);
+    document.querySelector('#cancelTask').addEventListener('click', () => { location.href = './pending.html'; });
+
+
+    function createTask(event) {
         event.preventDefault();
 
         const fields = [
@@ -55,14 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
             status,
             createDate
         );
-
-        task.createTask()
+        task.createTask();
 
         loading('../../assets/loading.gif','Criando nova tarefa...');
-    });
-
-    document.querySelector('#cancelTask').addEventListener('click', () => {
-        location.href = './pending.html';
-    });
-
+        setTimeout(() => { location.reload() }, 1900);
+    }
 });

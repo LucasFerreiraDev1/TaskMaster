@@ -19,4 +19,7 @@ export class BancoLocalStorage {
     setSession(value) {
         localStorage.setItem(this.key, JSON.stringify(value));
     }
+    deleteSession() {
+        localStorage.removeItem(this.key);
+    }
 }

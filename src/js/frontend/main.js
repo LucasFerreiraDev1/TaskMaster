@@ -1,3 +1,4 @@
+import { closeSession } from "../backend/utils.js";
 
 document.addEventListener('DOMContentLoaded', function() {
     // TOGGLE SIDEBAR
@@ -82,4 +83,6 @@ document.addEventListener('DOMContentLoaded', function() {
             closeAllOptions();
         }
     });
+
+    document.querySelector('#logoff').addEventListener('click', closeSession);
 });

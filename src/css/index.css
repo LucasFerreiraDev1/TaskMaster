@@ -37,11 +37,14 @@ nav a {
     margin-left: 24px;
     font-weight: 500;
     transition: color .2s ease;
+    cursor: pointer;
 }
 
 nav a:hover {
+    background-color: var(--glass);
     color: var(--accent);
 }
+
 
 /*  SECTION HOME */
 .home {

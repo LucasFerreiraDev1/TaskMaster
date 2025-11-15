@@ -10,7 +10,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../../css/app/pending.css">
     <title>TaskMaster - Tarefas Concluídas</title>
-    <script type="module">
+    <script type="module" defer="defer">
         import { BancoLocalStorage } from '../../js/backend/models/BancoLocalStorage.js';
         let session = new BancoLocalStorage('Session');
         let getSession = session.getSession();
@@ -39,6 +39,7 @@
                 <a href="in-progress.html">⏳ Em Progresso</a>
                 <a href="completed.html" class="active">✅ Concluído</a>
                 <a href="settings.html">⚙️ Configurações</a>
+                <a id="logoff"><i class="fas fa-sign-out-alt"></i>Encerrar sessão</a>
             </nav>
         </aside>
 

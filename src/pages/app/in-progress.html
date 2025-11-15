@@ -19,6 +19,12 @@
         if(!validateSession) {
             location.href = '../auth/login.html';
         }
+
+        function closeSession() {
+            session.deleteSession();
+            location.href = '../auth/login.html';
+        }
+        document.querySelector('#logoff').addEventListener('click', closeSession);
     </script>
 </head>
 
@@ -39,6 +45,7 @@
                 <a href="in-progress.html" class="active">⏳ Em Progresso</a>
                 <a href="completed.html">✅ Concluído</a>
                 <a href="settings.html">⚙️ Configurações</a>
+                <a id="logoff"><i class="fas fa-sign-out-alt"></i>Encerrar sessão</a>
             </nav>
         </aside>
 
